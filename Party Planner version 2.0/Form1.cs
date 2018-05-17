@@ -12,9 +12,36 @@ namespace Party_Planner_version_2._0
 {
     public partial class Form1 : Form
     {
+        BirthdayParty birthdayParty;
+        DinnerParty dinnerParty;
         public Form1()
         {
             InitializeComponent();
+            dinnerParty = new DinnerParty(5, fancyBox.Checked, healthyBox.Checked);
+            DisplayDinnerPartyCost();
+        }
+        private void DisplayDinnerPartyCost()
+        {
+            decimal Cost = dinnerParty.Cost;
+            costLabel.Text = Cost.ToString("c");
+        }
+
+        private void numericUpDown1_ValueChanged_1(object sender, EventArgs e)
+        {
+            dinnerParty.NumberOfPeople = (int)numericUpDown1.Value;
+            DisplayDinnerPartyCost();
+        }
+
+        private void fancyBox_CheckedChanged_1(object sender, EventArgs e)
+        {
+            dinnerParty.FancyDecorations = fancyBox.Checked;
+            DisplayDinnerPartyCost();
+        }
+
+        private void healthyBox_CheckedChanged_1(object sender, EventArgs e)
+        {
+            dinnerParty.HealthyOptions = healthyBox.Checked;
+            DisplayDinnerPartyCost();
         }
     }
 }

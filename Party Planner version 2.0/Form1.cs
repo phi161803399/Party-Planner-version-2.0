@@ -18,8 +18,11 @@ namespace Party_Planner_version_2._0
         {
             InitializeComponent();
             dinnerParty = new DinnerParty(5, fancyBox.Checked, healthyBox.Checked);
+            birthdayParty = new BirthdayParty(5, fancyBirthday.Checked, cakeWriting.Text);
             DisplayDinnerPartyCost();
+            DisplayBirhdayPartyCost();
         }
+        #region DinnerParty
         private void DisplayDinnerPartyCost()
         {
             decimal Cost = dinnerParty.Cost;
@@ -42,6 +45,32 @@ namespace Party_Planner_version_2._0
         {
             dinnerParty.HealthyOptions = healthyBox.Checked;
             DisplayDinnerPartyCost();
+        }
+#endregion
+
+        private void numberBirthday_ValueChanged(object sender, EventArgs e)
+        {
+            birthdayParty.NumberOfPeople = (int)numberBirthday.Value;
+            DisplayBirhdayPartyCost();
+        }
+
+        private void DisplayBirhdayPartyCost()
+        {
+            tooLongLabel.Visible = birthdayParty.CakeWritingTooLong;
+            decimal Cost = birthdayParty.Cost;
+            birthdayCost.Text = Cost.ToString("c");
+        }
+
+        private void fancyBirthday_CheckedChanged(object sender, EventArgs e)
+        {
+            birthdayParty.FancyDecorations = fancyBirthday.Checked;
+            DisplayBirhdayPartyCost();
+        }
+
+        private void cakeWriting_TextChanged(object sender, EventArgs e)
+        {
+            birthdayParty.CakeWriting = cakeWriting.Text;
+            DisplayBirhdayPartyCost();
         }
     }
 }

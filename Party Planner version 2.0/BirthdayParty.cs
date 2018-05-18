@@ -91,6 +91,8 @@ namespace Party_Planner_version_2._0
                     cakeCost = 75M + ActualLength * .25M;
                 }
 
+                if (NumberOfPeople > 12)
+                    totalCost += 100M;
                 return totalCost + cakeCost;
             }
         }

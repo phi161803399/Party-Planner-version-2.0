@@ -10,13 +10,10 @@ namespace Party_Planner_version_2._0
         {
             get
             {
-                decimal totalCost = CalculateCostOfDecorations();
-                totalCost += NumberOfPeople *
-                             (CalculateCostOfBeveragesPerPerson() + CostOfFoodPerPerson);
+                decimal totalCost = base.Cost;
+                totalCost += NumberOfPeople * CostOfFoodPerPerson;
                 if (HealthyOptions)
                     totalCost *= 0.95M;
-                if (NumberOfPeople > 12)
-                    totalCost += 100M;
                 return totalCost;
             }
         }

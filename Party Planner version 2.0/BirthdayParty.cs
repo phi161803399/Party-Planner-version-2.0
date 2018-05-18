@@ -62,9 +62,7 @@ namespace Party_Planner_version_2._0
         {
             get
             {
-                decimal totalCost;
-                totalCost = CalculateCostOfDecorations();
-                totalCost += (CostOfFoodPerPerson) * NumberOfPeople;
+                decimal totalCost = base.Cost;
                 decimal cakeCost;
                 if (CakeSize() == 8)
                     cakeCost = 40M + ActualLength * .25M;
@@ -72,9 +70,6 @@ namespace Party_Planner_version_2._0
                 {
                     cakeCost = 75M + ActualLength * .25M;
                 }
-
-                if (NumberOfPeople > 12)
-                    totalCost += 100M;
                 return totalCost + cakeCost;
             }
         }

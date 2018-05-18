@@ -17,6 +17,10 @@ namespace Party_Planner_version_2._0
             get
             {
                 decimal totalCost = CalculateCostOfDecorations();
+                totalCost += CostOfFoodPerPerson * NumberOfPeople;
+                if (NumberOfPeople > 12)
+                    totalCost += 100M;
+                return totalCost;
             }
         }
 
